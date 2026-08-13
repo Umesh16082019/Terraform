@@ -7,8 +7,8 @@ variable "environment" {
 }
 
 variable "sg_names" {
-    type = String
-    default = {
+    type = list(string)
+    default = [
         # Databases
         "MongoDB", "Redis", "Mysql", "RabbitMQ",
         # Backend
@@ -21,5 +21,5 @@ variable "sg_names" {
         "Frontend_alb",
         # Bastion
         "Bastion"
-    }
+    ]
 }
