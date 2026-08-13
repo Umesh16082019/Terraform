@@ -10,16 +10,16 @@ variable "sg_names" {
     type = list(string)
     default = [
         # Databases
-        "MongoDB", "Redis", "Mysql", "RabbitMQ",
+        "mongodb", "redis", "mysql", "rabbitmq",
         # Backend
-        "Catalogue", "User", "Cart", "Shipping", "Payment",
+        "catalogue", "user", "cart", "shipping", "payment",
         # Backend ALB
-        "Backend_alb",
+        "backend_alb",
         # Frontend
-        "Frontend",
+        "frontend",
         # Frontend ALB
-        "Frontend_alb",
+        "frontend_alb",
         # Bastion
-        "Bastion"
+        "bastion"
     ]
 }
