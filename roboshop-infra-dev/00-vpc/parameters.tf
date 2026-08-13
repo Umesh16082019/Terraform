@@ -4,8 +4,8 @@ resource "aws_ssm_parameter" "vpc_id" {
   value = module.vpc.vpc_id
 }
 
-resource "aws_ssm_parameter" "public_subnet_ids" {
+/* resource "aws_ssm_parameter" "public_subnet_ids" {
   name  = "/${var.project}/${var.environment}/public_subnet_ids"
   type  = "String"
-  value = module.vpc.vpc_id
-}
+  value = module.vpc.private_subnet_ids
+} */
