@@ -19,7 +19,7 @@ resource "terraform_data" "mongodb" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/umesh/Downloads/Umesh (1).pem")
+    private_key = var.private_key_pem
     host     = aws_instance.mongodb.private_ip
   }
 
