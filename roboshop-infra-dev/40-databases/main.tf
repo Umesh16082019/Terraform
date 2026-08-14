@@ -20,7 +20,7 @@ resource "terraform_data" "mongodb" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = var.private_key_pem  # <--- MUST use the key, not the password
+    private_key = file("Umesh.pem")  # <--- MUST use the key, not the password
     host        = aws_instance.mongodb.private_ip
     timeout     = "5m"                 # Give it enough time to boot up
   }
