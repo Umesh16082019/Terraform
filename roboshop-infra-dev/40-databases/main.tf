@@ -16,22 +16,25 @@ resource "terraform_data" "mongodb" {
     aws_instance.mongodb.id
   ]
 
+  # --- CHANGE THE CONNECTION BLOCK TO THIS ---
   connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    password = "DevOps321"
-    host     = aws_instance.mongodb.private_ip
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = var.private_key_pem  # <--- MUST use the key, not the password
+    host        = aws_instance.mongodb.private_ip
+    timeout     = "5m"                 # Give it enough time to boot up
   }
+  # -------------------------------------------
 
   provisioner "file" {
-    source      = "bootstrap.sh" # Local file path
-    destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
+    source      = "bootstrap.sh"
+    destination = "/tmp/bootstrap.sh"
   }
 
   provisioner "remote-exec" {
     inline = [
         "chmod +x /tmp/bootstrap.sh",
-        "sudo sh /tmp/bootstrap.sh"
+        "sudo sh /tmp/bootstrap.sh" 
     ]
   }
 }
