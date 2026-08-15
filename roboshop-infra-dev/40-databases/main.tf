@@ -3,6 +3,7 @@ resource "aws_instance" "mongodb" {
   instance_type = "t3.micro"
   subnet_id = local.database_subnet_id
   vpc_security_group_ids = [local.mongodb_sg_id]
+  user_data = file("${path.module}/bootstrap.sh")
   tags = merge(
     {
         Name = "${var.project}-${var.environment}-mongodb"
@@ -11,7 +12,7 @@ resource "aws_instance" "mongodb" {
   )
 }
 
-resource "terraform_data" "mongodb" {
+/* resource "terraform_data" "mongodb" {
   triggers_replace = [
     aws_instance.mongodb.id
   ]
@@ -37,4 +38,4 @@ resource "terraform_data" "mongodb" {
         "sudo sh /tmp/bootstrap.sh" 
     ]
   }
-}
+} */
