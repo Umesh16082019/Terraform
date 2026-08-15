@@ -5,7 +5,7 @@ data "aws_ami" "roboshop" {
   filter {
     name   = "name"
     # This searches for Amazon Linux 2023 AMIs
-    values = ["al2023-ami-2023.*-x86_64"]
+    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
   }
 
   filter {
